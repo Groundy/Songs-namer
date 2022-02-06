@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SongsnamerClass</class>
+ <widget class="QMainWindow" name="SongsnamerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>472</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Songsnamer</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="5" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="previousSongButton">
+          <property name="text">
+           <string>poprzednia piosenka</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="songlabel">
+          <property name="text">
+           <string>0/0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="nextSongButton">
+          <property name="text">
+           <string>następna piosenka</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0" colspan="3">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="1" colspan="2">
+         <widget class="QPlainTextEdit" name="artistText">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="artistLabel">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Wykonawca</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="mp3Label">
+          <property name="text">
+           <string>.mp3</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPlainTextEdit" name="titleText">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="3">
+         <widget class="QPushButton" name="changeName">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Zamień </string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="titleLabel">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Tytuł</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="separatorLabel">
+          <property name="text">
+           <string>łącznik</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPlainTextEdit" name="separatorField">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pathButton">
+          <property name="text">
+           <string>wybierz folder</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="pathLabel">
+          <property name="text">
+           <string>---------------Miejsce na ścieżkę do folderu z muzyką---------------</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="1">
+         <widget class="QListWidget" name="artistsAlreadyUsedList">
+          <item>
+           <property name="text">
+            <string>Other</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="resetArtistNames">
+          <property name="text">
+           <string>Restartuj znane nazwy artystów</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="2">
+         <widget class="QListWidget" name="songsInFolderView"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Songsnamer.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pathButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>selectFolderButtonPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>153</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nextSongButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>nextButtonPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>494</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>previousSongButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>previousButtonPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>songsInFolderView</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>itemOnSongListClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>artistsAlreadyUsedList</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>artistNameOnListClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>436</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetArtistNames</sender>
+   <signal>clicked()</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>restartArtistNames()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>436</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>changeName</sender>
+   <signal>clicked()</signal>
+   <receiver>SongsnamerClass</receiver>
+   <slot>changeName()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>395</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>nextButtonPressed()</slot>
+  <slot>selectFolderButtonPressed()</slot>
+  <slot>previousButtonPressed()</slot>
+  <slot>itemOnSongListClicked()</slot>
+  <slot>changeName()</slot>
+  <slot>artistNameOnListClicked()</slot>
+  <slot>restartArtistNames()</slot>
+ </slots>
+</ui>
