@@ -43,8 +43,19 @@ void Songsnamer::itemOnSongListClicked(){
 	refreshSongNumberNumber();
 	//qDebug(text.toStdString().c_str());
 	text = text.left(text.length() - 4);
-	ui.titleText->setPlainText(text);
-	ui.artistText->setPlainText("");
+
+	QString separator = ui.separatorField->toPlainText();
+	bool separatorFoundInFileName = text.indexOf(separator) != -1;
+	QString artistField = "", titleField = text;
+	if(separatorFoundInFileName) {
+		QStringList fileNameParts = text.split(separator);
+		if (fileNameParts.size() == 2) {
+			titleField = fileNameParts[1];
+			artistField = fileNameParts[0];
+		}
+	}
+	ui.titleText->setPlainText(titleField);
+	ui.artistText->setPlainText(artistField);
 }
 
 void Songsnamer::changeName(){
@@ -62,6 +73,7 @@ void Songsnamer::changeName(){
 	QString newPath = pathToFolder + "//" + newName;
 	QFile file(orgPath);
 	file.rename(newPath);
+	ui.songsInFolderView->currentItem()->setText(newName);
 }
 
 void Songsnamer::restartArtistNames(){
