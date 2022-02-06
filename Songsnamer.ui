@@ -140,6 +140,9 @@
             <height>30</height>
            </size>
           </property>
+          <property name="plainText">
+           <string> - </string>
+          </property>
          </widget>
         </item>
        </layout>

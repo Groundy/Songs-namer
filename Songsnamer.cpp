@@ -10,9 +10,19 @@ Songsnamer::Songsnamer(QWidget *parent)
 void Songsnamer::fillListWithMp3Files(QString pathToFolder){
 	QDir dir(pathToFolder);
 	QStringList fileNames = dir.entryList(QStringList() << "*.mp3");
+	QString separator = ui.separatorField->toPlainText();
 	fileNames.sort();
 	for each (QString fileName in fileNames){
 		ui.songsInFolderView->addItem(fileName);
+
+		QStringList fileNameParts = fileName.split(separator);
+		bool fileNameHasProperFormat = fileNameParts.size() == 2;
+		QString artistName = fileNameParts[0];
+		bool artistNameIsCommon = artistName[0] != '_';
+		bool artistIsNotOnListYet = ui.artistsAlreadyUsedList->findItems(artistName, Qt::MatchExactly).size() == 0;
+		bool addArtist = fileNameHasProperFormat && artistNameIsCommon && artistIsNotOnListYet;
+		if (addArtist)
+			ui.artistsAlreadyUsedList->addItem(artistName);
 	}
 	currentSong = 0;
 	songCount = fileNames.count() - 1;
@@ -27,6 +37,8 @@ void Songsnamer::selectFolderButtonPressed(){
 	QFileDialog fileDialog(this);
 	fileDialog.setFileMode(QFileDialog::Directory);
 	bool ok = fileDialog.exec();
+	currentSong = 0;
+	ui.songsInFolderView->clear();
 	if (ok) {
 		QString selectedFolderPath = fileDialog.selectedFiles()[0];
 		if (selectedFolderPath.length() > 0){
@@ -63,7 +75,7 @@ void Songsnamer::changeName(){
 	QString title = ui.titleText->toPlainText();
 	auto itemsOnListForArtist = ui.artistsAlreadyUsedList->findItems(artistName, Qt::MatchExactly);
 	bool artistIsNotOnTheList = itemsOnListForArtist.size() == 0;
-	if (artistIsNotOnTheList)
+	if (artistIsNotOnTheList && artistName[0] != '_')
 		ui.artistsAlreadyUsedList->addItem(artistName);
 	
 	QString separator = ui.separatorField->toPlainText();
