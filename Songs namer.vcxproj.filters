@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="source\main.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Songsnamer.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
+    <ClCompile Include="Songsnamer.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Songs namer.rc" />
@@ -20,18 +16,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="source\Songsnamer.ui">
-      <Filter>source</Filter>
-    </QtUic>
+    <QtUic Include="Songsnamer.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="source\Songsnamer.h">
-      <Filter>source</Filter>
-    </QtMoc>
+    <QtMoc Include="Songsnamer.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="source\Songsnamer.qrc">
-      <Filter>source</Filter>
-    </QtRcc>
+    <QtRcc Include="Songsnamer.qrc" />
   </ItemGroup>
 </Project>
